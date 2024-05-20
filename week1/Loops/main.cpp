@@ -33,7 +33,7 @@ int main()
     //     }
     // }
 
-    // Use of continue keyword (just for skip the perticular iteration)
+    // Use of continue keyword (just for skip the current iteration)
 
     // for(int i=1; i<=5; i=i+1) {
     //     if(i == 4) {
