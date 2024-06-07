@@ -47,22 +47,6 @@ void numberChangingPyramid(int n) {
     }
 }
 
-// ZERO-ONE TRIANGLE PATTERN
-void zeroOneTriangle(int n) {
-    for(int row = 0; row < n; row++) {
-        for(int col = 0; col < row + 1; col++) {
-            if(row == 0 || row == col || col) {
-                cout << 1 << " ";
-            } else {
-                cout << 0 << " ";
-            }
-        }
-        cout << endl;
-    }
-}
-
-
-
 int main()
 {
     int n;
@@ -71,8 +55,7 @@ int main()
     // numberTriangular(n);
     // numberIncreasingPyramid(n);
     // numberIncreasingReversePyramid(n);
-    // numberChangingPyramid(n);
-    zeroOneTriangle(n);
+    numberChangingPyramid(n);
 
     return 0;
 }
