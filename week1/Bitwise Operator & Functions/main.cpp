@@ -35,11 +35,35 @@ bool isPrime(int number) {
   //iska matalab aap prime ho
   //ika mtlb return true;
   return true;
+}
 
+void printEvenInsideRange(int start, int end) {
+  for(int i = start; i <= end; i++) {
+    if(!(i & 1)) {
+      cout << i << " ";
+    }
+  }
+}
+
+float calculatePecentage(int sb1, int sb2, int sb3, int sb4, int sb5) {
+  int sum = sb1 + sb2 + sb3 + sb4 + sb5;
+  int totalMarks = 500;
+  float percentage = (sum * 100.0) / totalMarks;
+  return percentage;
 }
 
 
 int main() {
+
+  // Reference Variable
+  int age = 15;
+  int &demo = age;
+  age++;
+  cout << demo << endl;
+
+  // cout << "Total Percentage = " << calculatePecentage(95, 95, 99, 65, 76) << endl;
+
+  // printEvenInsideRange(100, 200);
 
   // bool ans = isPrime(2);
   // if(ans == true) {
@@ -98,7 +122,6 @@ int main() {
   // else {
   //   cout << "Odd Number" << endl;
   // }
-
   return 0;
 }
 
