@@ -77,17 +77,76 @@ void fancyPatternSecond(int n) {
     }
 }
 
+// PASCAL TRIANGLE
+void pascalTriangle(int n) {
+    for(int row = 1; row <= n; row++) {
+        int c = 1;
+        for(int col = 1; col <= row; col++) {
+            cout << c << " ";
+            c = c * (row - col) / col;
+        }
+        cout << endl;
+    }
+}
+
+// BUTTERFLY PATTERN
+void butterFlyPattern(int n) {
+    for(int i = 0; i < 2*n; i++) {
+        int cond = i < n ? i : n + (n - i - 1);
+        int spaceCount = i < n ? 2*(n-cond-1): i - cond - 1;
+        for(int j = 0; j < 2*n; j++) {
+            if(j<=cond) {
+                cout << "* ";
+            } else if(spaceCount > 0) {
+                cout << "  ";
+                spaceCount--;
+            } else {
+                cout << "* ";
+            }
+        }
+        cout << endl;
+    }
+
+}
+
+// CONVERT FROM KM TO MILES
+float fromKmToMiles(float n) {
+    return ( n * 0.62137);
+}
+
+// PRINT ALL DIGITS OF AN INTEGER
+void printAllDigitsOfInteger(int n) {
+    while(n){
+        int unitDigit = n % 10;
+        cout << unitDigit << endl;
+        n /= 10;
+    }
+}
+
+// CALCULATE AREA OF CIRCLE
+float areaOfCircle(int r) {
+    float area = 3.14 * r * r;
+    return area;
+}
+
+
 
 int main () {
 
-    int n;
+    float n;
     cout << "Enter the value of n : ";
     cin >> n;
     // numericHollowPyramid(n);
     // numericPalindromeEquiPyramid(n);
     // fancyPatternOne(n);
     // fancyPatternSecond(n);
-
+    // pascalTriangle(n);
+    // butterFlyPattern(n);
+    // float miles = fromKmToMiles(n);
+    // cout << miles << endl;
+    // printAllDigitsOfInteger(n);
+    float area = areaOfCircle(n);
+    cout << "Area Of Circle = " << area;
 
     return 0;
 }
