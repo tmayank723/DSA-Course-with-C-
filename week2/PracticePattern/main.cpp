@@ -129,7 +129,49 @@ float areaOfCircle(int r) {
     return area;
 }
 
+// CHECK NUMBER IS EVEN OR ODD
+bool isEven(int n) {
+    return  (n & 1) ? false : true;
+}
 
+// FIND THE FACTORIAL OF THE NUMBER
+int findFactorial(int n) {
+    int answer = 1;
+    while (n > 0) {
+        answer *= n;
+        n--;
+    }
+    return answer;
+}
+
+// CHECK NUMBER IS PRIME OR NOT
+bool isPrime(int n) {
+    for(int i = 2; i <  n; i++) {
+        if(n % i == 0) 
+            return false;
+    }
+    return true;
+}
+
+//PRINT ALL THE PRIME NUMBERS TO N
+void printAllPrimeNumber(int n) {
+    for(int i = 2; i <= n; i++) {
+        bool checkPrime = isPrime(i);
+        if(checkPrime)
+            cout << i << " ";
+    }
+}
+
+// REVERSE THE INTEGERS
+int reverseInteger(int n) {
+    int ans = 0;
+    while (n > 0) {
+        int lastDigit = n % 10;
+        ans = ans * 10 + lastDigit;
+        n = n / 10;
+    }
+    return ans;    
+}
 
 int main () {
 
@@ -137,16 +179,38 @@ int main () {
     cout << "Enter the value of n : ";
     cin >> n;
     // numericHollowPyramid(n);
+
     // numericPalindromeEquiPyramid(n);
+
     // fancyPatternOne(n);
+
     // fancyPatternSecond(n);
+
     // pascalTriangle(n);
+
     // butterFlyPattern(n);
+
     // float miles = fromKmToMiles(n);
     // cout << miles << endl;
+
     // printAllDigitsOfInteger(n);
-    float area = areaOfCircle(n);
-    cout << "Area Of Circle = " << area;
+    
+    // float area = areaOfCircle(n);
+    // cout << "Area Of Circle = " << area;
+
+    // bool checkEven = isEven(n);
+    // checkEven ? cout << "Number is Even" : cout << "Number is Odd" << endl;
+
+    // int factorial = findFactorial(n);
+    // cout << "factorial of " << n << " is " << factorial << endl;
+
+    // bool ans = isPrime(n);
+    // ans ? cout << "Given Number " << n << " is Prime." << endl : cout << "Not Prime" << endl;
+
+    //printAllPrimeNumber(n);
+
+    int ans = reverseInteger(n);
+    cout << "Reverse Number is : " << ans;
 
     return 0;
 }
