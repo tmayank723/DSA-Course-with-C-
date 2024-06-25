@@ -119,14 +119,96 @@ void twoSumPrintAllPairs(int arr[], int n, int target) {
     return;
 }
 
+// PRINT ALL THE TRIPLETS
+void printAllTriplets(int arr[], int n) {
+    int count = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            for(int k = 0; k < n; k++) {
+                cout << arr[i] << ", " << arr[j] << ", " << arr[k] << endl;
+                count++;
+            }
+        }
+    }
+    // COUNT ALL THE PAIRS
+    cout << "Total Triplets : " << count << endl;
+}
+
+// PRINT ALL THE PAIR OF THREE SUMS
+void checkThreeSum(int arr[], int n, int target) {
+    for(int i=0; i<n; i++) {
+        for(int j=i+1; j<n; j++) {
+            for(int k=j+1; k<n; k++) {
+                if(arr[i] + arr[j] + arr[k] == target) {
+                    // PAIR FOUND
+                    cout << arr[i] << ", " << arr[j] << ", " << arr[k] << endl;
+                }
+            }
+        }
+    }
+}
+
+// ROTATE AN ARRAY OR SHIFT AN ARRAY BY N ELEMENT
+void rotateAnArray(int arr[], int size, int n) {
+    // size -> Size of the Array
+    // n -> refers to the number of element by which we have to shift
+    n = n % size;
+    if(n == 0) {
+        // No need to do anything
+        return;
+    }
+
+    // Step 1) Copy Last n element into a temp array
+    int temp[1000];
+    int index= 0;
+    for(int i = size - n; i < size; i++) {
+        temp[index] = arr[i];
+        index++;
+    }
+
+    // Step 2) Shift Array's element by n places
+    for(int i = size - 1; i >=0; i--) {
+        if(i - n >= 0) {
+            arr[i] = arr[i - n];
+        }
+    }
+
+    // Step 3) Copy Temp array into original Array
+    for(int i = 0; i < n; i++) {
+        arr[i] = temp[i];
+    }
+}
+
 int main() {
 
-    int arr[] = {10,20,30,40};
-    int size = 4;
-    int target = 60;
+    int arr[] = {10,20,30,40,50,60};
+    int size = 6;
+    // Rotating an array by 2 Places
+    int shift = 2;
+
+    // ROTATE AN ARRAY OR SHIFT AN ARRAY BY N ELEMENT
+    // Print an Array Before Shifting
+    cout << "Before Shift : " << endl;
+    for(int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    rotateAnArray(arr, size, shift);
+    cout << "After Shift : " << endl;
+    // Print an Array After Shifting
+    for(int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
     
+    // PRINT ALL THE PAIR OF THREE SUMS
+    // checkThreeSum(arr, size, target);
+
+    // PRINT ALL THE TRIPLETS
+    // printAllTriplets(arr, size);
+
     // RETURN ALL PAIR OF TWO SUM
-    twoSumPrintAllPairs(arr, size, target);
+    // twoSumPrintAllPairs(arr, size, target);
 
     // RETURN PAIR OF TWO SUM USING ARRAY
     // int ans[] = {INT_MIN, INT_MAX};
