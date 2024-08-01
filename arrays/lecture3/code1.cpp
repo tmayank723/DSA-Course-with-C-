@@ -1,5 +1,6 @@
 #include <iostream>
 #include<vector>
+#include <limits.h>
 using namespace std;
 
 bool search2DArray(int arr[][4], int rowSize, int colSize, int target) {
@@ -29,22 +30,136 @@ bool search2DUsingVector(vector<vector<int>> arr, int target) {
     return false;
 }
 
-int main() {
-
-    // SEARCHING USING 2D VECTOR
-    vector<vector<int>> arr(4, vector<int>(2,0));
-    int rowSize = 4;
-    int colSize = 2;
-    int target = 44;
-    // Taking input from the vector
-    for(int i = 0; i < rowSize; i++) {
+int findMinimum2DArray(int arr[][4], int rowSize, int colSize) {
+    int minValue = INT_MAX;
+    for(int r = 0; r < rowSize; r++) {
         for(int j = 0; j < colSize; j++) {
-            cout << "Enter the value of ...";
-            cin >> arr[i][j];
+            minValue = min(minValue, arr[r][j]);
         }
     }
-    bool ans = search2DUsingVector(arr, target);
-    cout << "Ans is : " << ans;
+    return minValue;
+}
+
+int findMaxNumber2DArray(int arr[][4], int rowSize, int colSize) {
+    int maxNumber = INT_MIN;
+    for(int r = 0; r < rowSize; r++) {
+        for(int c = 0; c < colSize; c++) {
+            maxNumber = max(arr[r][c], maxNumber);
+        }
+    }
+    return maxNumber;
+}
+
+void printRowWiseSum(int arr[][4], int rowSize, int colSize) {
+    for(int i = 0; i < rowSize; i++) {
+        int sum = 0;
+        for(int j = 0; j < colSize; j++) {
+            sum += arr[i][j];
+        }
+        cout << "Sum of " << i << "th Row = " << sum << endl;
+    }
+    return;
+}
+
+void printColumnWiseSum(int arr[][4], int rowSize, int colSize) {
+    for(int j = 0; j < colSize; j++) {
+        int sum = 0;
+        for(int i = 0; i < rowSize; i++) {
+            sum += arr[i][j];
+        }
+        cout << "Sum of " << j << "th column is = " << sum << endl;
+    }
+}
+
+void diagonalWiseSumFirst(int arr[][3], int rowSize, int colSize) {
+    int sum = 0;
+    for(int i = 0; i < rowSize; i++) {
+        sum += arr[i][i];
+    }
+    cout << "Diagonal Wise sum is " << sum << endl;
+}
+
+void diagonalWiseSumSecond(int arr[][3], int rowSize, int colSize) {
+    int sum = 0;
+    for(int i = 0; i < rowSize; i++) {
+        for(int j = 0; j < rowSize - i - 1; j++) {
+            cout << i << " " << j << endl;
+             // sum += arr[i][j];
+        }
+    }
+    // cout << "Sum is : " << sum << endl;
+}
+
+void transposeMatrix(int arr[][3], int rowSize, int colSize) {
+    // Using same Array
+    for(int i = 0; i < rowSize; i++) {
+        for(int j = i; j < colSize; j++) {
+            swap(arr[i][j], arr[j][i]);
+        }
+    }
+
+    // Using New Array
+    // int ans[100][100] = {0};
+    // for(int i = 0; i < rowSize; i++) {
+    //     for(int j = 0; j < colSize; j++) {
+    //         arr[i][j] = arr[j][i];
+    //     }
+    // }
+    
+    // Printing an Array
+    for(int i = 0; i < rowSize; i++) {
+        for(int j = 0; j < colSize; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+
+    int arr[3][3] = {
+        {10,11,12},
+        {20,21,22},
+        {30,31,32}
+    };
+    int rowSize = 3;
+    int colSize = 3;
+
+    // TRANSPOSE OF THE MATRIX
+    transposeMatrix(arr, rowSize, colSize);
+
+    // PRINT DIAGONAL-WISE SUM IN THE 2D ARRAY
+    // diagonalWiseSumFirst(arr, rowSize, colSize);
+    // diagonalWiseSumSecond(arr, rowSize, colSize);
+
+    // PRINT COLUMN-WISE SUM IN THE 2D ARRAY
+    // printColumnWiseSum(arr, rowSize, colSize);
+    
+    // PRINT ROW-WISE SUM IN THE 2D ARRAY
+    // printRowWiseSum(arr, rowSize, colSize);
+    
+    // FIND MINIMUM NUMBER FROM THE 2D ARRAY
+    // int minNumber = findMinimum2DArray(arr, rowSize, colSize);
+    // cout << "Minimum Number is = " << minNumber << endl;
+
+    // FIND MAXIMUM NUMBER FROM THE 2D ARRAY
+    // int maxNumber = findMaxNumber2DArray(arr, rowSize, colSize);
+    // cout << "Maximum Number is = " << maxNumber << endl;
+
+    // SEARCHING USING 2D VECTOR
+    // vector<vector<int>> arr(4, vector<int>(2,0));
+    // int rowSize = 4;
+    // int colSize = 2;
+    // int target = 44;
+    // // Taking input from the vector
+    // for(int i = 0; i < rowSize; i++) {
+    //     for(int j = 0; j < colSize; j++) {
+    //         cout << "Enter the value of ...";
+    //         cin >> arr[i][j];
+    //     }
+    // }
+    // bool ans = search2DUsingVector(arr, target);
+    // cout << "Ans is : " << ans;
 
     // LINEAR SEARCH IN 2D ARRAY
     // int arr[3][4] = {
