@@ -82,12 +82,9 @@ void diagonalWiseSumFirst(int arr[][3], int rowSize, int colSize) {
 void diagonalWiseSumSecond(int arr[][3], int rowSize, int colSize) {
     int sum = 0;
     for(int i = 0; i < rowSize; i++) {
-        for(int j = 0; j < rowSize - i - 1; j++) {
-            cout << i << " " << j << endl;
-             // sum += arr[i][j];
-        }
+        sum += arr[i][colSize - i - 1];
     }
-    // cout << "Sum is : " << sum << endl;
+    cout << "Sum is : " << sum << endl;
 }
 
 void transposeMatrix(int arr[][3], int rowSize, int colSize) {
@@ -118,19 +115,19 @@ void transposeMatrix(int arr[][3], int rowSize, int colSize) {
 int main() {
 
     int arr[3][3] = {
-        {10,11,12},
-        {20,21,22},
-        {30,31,32}
+        {10,11,150},
+        {20,50,22},
+        {100,31,32}
     };
     int rowSize = 3;
     int colSize = 3;
 
     // TRANSPOSE OF THE MATRIX
-    transposeMatrix(arr, rowSize, colSize);
+    // transposeMatrix(arr, rowSize, colSize);
 
     // PRINT DIAGONAL-WISE SUM IN THE 2D ARRAY
     // diagonalWiseSumFirst(arr, rowSize, colSize);
-    // diagonalWiseSumSecond(arr, rowSize, colSize);
+    diagonalWiseSumSecond(arr, rowSize, colSize);
 
     // PRINT COLUMN-WISE SUM IN THE 2D ARRAY
     // printColumnWiseSum(arr, rowSize, colSize);
